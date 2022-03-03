@@ -22,7 +22,7 @@ Se simulo 100.000 transacciones con las siguientes caracteristicas:
   
 # Problema
 
-Se tienen transacciones de una tienda, y queremos saber quienes son nuestros mejores clientes.
+Se tienen transacciones de una tienda, y queremos saber quienes son nuestros mejores clientes, para realizar campañas personalisadas.
   
 # Objetivo
  
@@ -41,7 +41,7 @@ Clasificacion rapida de los clientes de la tienda. [Clusters por indicadores]
                                                                           New Customers           435
                                                                           Can't Lose              271
   
-Se obtiene que dados los parametros dados para la simulacion, nuestros clientes se encuentran en estado de riesgo,  [falta explicacion]
+Se obtiene que dados los parametros dados para la simulacion, de nuestros clientes 17281 (52%) se encuentran en categorias bajas y 15723 (48%) en categorias altas. Dados estos grupos se podran realizar campañas de mercadeo dirigidas y particulares.
   
 # Bibliografia
  
