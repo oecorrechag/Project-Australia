@@ -30,16 +30,16 @@ Clasificacion rapida de los clientes de la tienda. [Clusters por indicadores]
 
 # Resultados y conclusiones
 
-New Customers             0.28
-Need Attention            0.20
-About to Sleep            0.18
-Potential higt            0.11
-Hibernating               0.07
-Champions                 0.05
-At Risk                   0.05
-New Customers higt        0.02
-Potential low             0.02
-Unique higt - Promising   0.01
+- New Customers             0.28 <br>
+- Need Attention            0.20 <br>
+- About to Sleep            0.18 <br>
+- Potential higt            0.11 <br>
+- Hibernating               0.07 <br>
+- Champions                 0.05 <br>
+- At Risk                   0.05 <br>
+- New Customers higt        0.02 <br>
+- Potential low             0.02 <br>
+- Unique higt - Promising   0.01 <br>
 
 Se obtiene que dados los parametros dados para la simulacion, de nuestros clientes 17281 (52%) se encuentran en categorias bajas y 15723 (48%) en categorias altas. Dados estos grupos se podran realizar campañas de mercadeo dirigidas y particulares.
 
