@@ -30,6 +30,8 @@ Clasificacion rapida de los clientes de la tienda. [Clusters por indicadores]
 
 # Resultados y conclusiones
 
+Using rfm v1:
+
 - New Customers             0.28 <br>
 - Need Attention            0.20 <br>
 - About to Sleep            0.18 <br>
@@ -42,6 +44,20 @@ Clasificacion rapida de los clientes de la tienda. [Clusters por indicadores]
 - Unique higt - Promising   0.01 <br>
 
 Se obtiene que dados los parametros dados para la simulacion, de nuestros clientes 17281 (52%) se encuentran en categorias bajas y 15723 (48%) en categorias altas. Dados estos grupos se podran realizar campañas de mercadeo dirigidas y particulares.
+
+Using rfm v2:
+
+- 1         0.13 <br>
+- 2         0.14 <br>
+- 3         0.19 <br>
+- 4         0.10 <br>
+- 5         0.10 <br>
+- 6         0.10 <br>
+- 7         0.18 <br>
+- 8         0.06 <br>
+
+note: numbers of groups was random.
+
 
 # Bibliografia
 
