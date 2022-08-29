@@ -46,30 +46,30 @@ def rfm_v1(dataset, id_customer, id_facture, date, money,
 
     # partir los grupos con nombre
     seg_map = {
-        r'[4-5][1-2][1-2]': 'Hibernating',
+        r'[1-2][1-2][1-2]': 'Hibernating',
 
         r'[3][3][3]': 'About to Sleep',
         r'[3][1-2][1-2-3]': 'About to Sleep',
-        r'[3-4-5][3][1-2]': 'About to Sleep',
-        r'[4-5][3][1-2-3]': 'About to Sleep',
-        r'[4-5][1-2-3][3]': 'About to Sleep',
-        
-        r'[1-2][1-2-3][1-2-3]': 'New Customers',
-        
-        r'[1-2][4-5][1-2-3]': 'Potential low', 
-        
-        r'[3-4-5][4-5][1-2-3]': 'At Risk', 
-        
-        r'[1-2-3][1-2][4-5]': 'New Customers higt', 
-        
-        r'[4-5][1-2][4-5]': 'Unique higt - Promising', 
-        
-        r'[4-5][3-4-5][4-5]': 'Need Attention', 
-        
-        r'[1-2-3][3][4-5]': 'Potential higt', 
+        r'[1-2-3][3][1-2]': 'About to Sleep',
+        r'[1-2][3][1-2-3]': 'About to Sleep',
+        r'[1-2][1-2-3][3]': 'About to Sleep',
+                
+        r'[4-5][1-2-3][1-2-3]': 'New Customers',
+                
+        r'[4-5][4-5][1-2-3]': 'Potential low', 
+                
+        r'[1-2-3][4-5][1-2-3]': 'At Risk', 
+                
+        r'[3-4-5][1-2][4-5]': 'New Customers higt', 
+                
+        r'[1-2][1-2][4-5]': 'Unique higt - Promising', 
+                
+        r'[1-2][3-4-5][4-5]': 'Need Attention', 
+                
+        r'[3-4-5][3][4-5]': 'Potential higt', 
         r'[3][3-4-5][4-5]': 'Potential higt',
-        
-        r'[1-2][4-5][4-5]': 'Champions'
+                
+        r'[4-5][4-5][4-5]': 'Champions'
         
     }
 
