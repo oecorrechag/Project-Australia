@@ -7,6 +7,9 @@ from dash import Dash, dcc, html, Input, Output, callback
 from components.layouts import header, footer, sidebar
 from pages import home, page1, page2, about
 
+import warnings
+warnings.filterwarnings("ignore")
+
 # import glob
 # import os
 # ROOT_FOLDER = os.path.abspath(os.path.join(
@@ -16,10 +19,19 @@ from pages import home, page1, page2, about
 # ASSETS_FOLDER = os.path.join(SRC_FOLDER, "assets")
 
 df = pd.read_parquet('data/data.parquet.gzip')
+df_ts = pd.read_parquet('data/df_ts.parquet.gzip')
+df_cus = pd.read_parquet('data/df_cus.parquet.gzip')
+df_cir = pd.read_parquet('data/df_cir.parquet.gzip')
+df_sto = pd.read_parquet('data/df_sto.parquet.gzip')
 
 data_store = html.Div([dcc.Store(id="original_data", data=df.to_json()),
+                       dcc.Store(id="df_ts", data=df_ts.to_json()),
+                       dcc.Store(id="df_cus", data=df_cus.to_json()),
+                       dcc.Store(id="df_cir", data=df_cir.to_json()),
+                       dcc.Store(id="df_sto", data=df_sto.to_json()),
                        dcc.Store(id="intermediate")
                        ])
+
 
 # external_style_sheet = glob.glob(os.path.join(
 #     ASSETS_FOLDER, "bootstrap/css") + "/*.css")

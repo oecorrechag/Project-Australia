@@ -19,19 +19,19 @@ def simple_time_series(data: pd.DataFrame, x, y, xl, yl):
     return fig
 
 
-def bars_plot_contador(data: pd.DataFrame, x, xl):
+# def bars_plot_contador(data: pd.DataFrame, x, xl):
 
-    data = tipo1(data, 'stockcode')
+#     data = tipo1(data, 'stockcode')
 
-    fig = px.bar(data, y='proporcion', x=x, 
-                    title = '',
-                    hover_data=['contador'],
-                    labels = {x:xl, 'contador': 'Units', 'proporcion':'Proportion'},
-                )
-    fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
-    fig.update_layout(yaxis_tickformat='.1%')  
+#     fig = px.bar(data, y='proporcion', x=x, 
+#                  title = '',
+#                  hover_data=['contador'],
+#                  labels = {x:xl, 'contador': 'Units', 'proporcion':'Proportion'},
+#                 )
+#     fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
+#     fig.update_layout(yaxis_tickformat='.1%')  
     
-    return fig
+#     return fig
 
 
 def simple_bars_plot(data: pd.DataFrame, x, y, xl, yl):
@@ -50,10 +50,8 @@ def grafico_circulo(data, variable, centro):
     
     '''Ingresa un df y retorna un grafico de pie'''
     
-    df_tipo = tipo1(data, variable)
-
-    labels = list(df_tipo[variable])
-    fig = go.Figure(data=[go.Pie(labels = labels, values = df_tipo['contador'], name='', 
+    labels = list(data[variable])
+    fig = go.Figure(data=[go.Pie(labels = labels, values = data['contador'], name='', 
                                  # marker_colors=human_sequence2h,
                                  direction='clockwise', sort=False)])
     fig.update_traces(hole=.5, hoverinfo="label+percent+value+name", textinfo='label')
