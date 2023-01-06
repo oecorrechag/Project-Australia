@@ -32,68 +32,51 @@ Menu = dbc.Row(children=[
           )
 def clean_data(data, Page1Select2):
     data = pd.read_json(data)
-    data = data[data['City'] == Page1Select2]
+    # data = data[data['City'] == Page1Select2]
     return data.to_json(date_format='iso', orient='split')
 ##
 
-Page1Box1 = dbc.Row(children=[
-    html.Div([
-        html.Div(id='page1_info1'),
-    ]),
-])
+G1 = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H4("Title", className="card-title"),
+            html.H6("Units", className="card-subtitle"),
+            dcc.Graph(id='Page1Graph1', figure={}),
+            html.H6("Customers", className="card-subtitle"),
+            dcc.Graph(id='Page1Graph2', figure={}),
+            html.H6("Money", className="card-subtitle"),
+            dcc.Graph(id='Page1Graph3', figure={}),
+        ]
+    ),
+)
 @callback(
-    Output('page1_info1', 'children'),
+    Output('Page1Graph1', 'figure'),
+    Output('Page1Graph2', 'figure'),
+    Output('Page1Graph3', 'figure'),
     Input('original_data', 'data'),
-    Input('Page1Select1', 'value'),
     )
-def display_value(data, Page1Select1):
-    data = pd.read_json(data)
-    page1_info1 = Page1Select1
-    return page1_info1
+def graphics(data):
+    df = pd.read_json(data)
 
+    # units
+    df_ts = df.copy()
+    df_ts = df_ts.loc[:,['date','contador']]
+    df_ts = df_ts.groupby('date').sum().reset_index()
+    fig1 = fg.simple_time_series(df_ts, x='date', y="contador", xl='Date', yl='Units')
 
-Page1Table = dbc.Row(children=[
-    html.Div([
-        html.Div(id='page1_info2'),
-    ]),
-])
-@callback(
-    Output('page1_info2', 'children'),
-    Input('original_data', 'data'),
-    Input('Page1Select2', 'value'),
-    )
-def display_value(data, Page1Select2):
-    data = pd.read_json(data)
-    df2 = data[data['City'] == Page1Select2]
-    page1_info2 = html.Div([
-        dash_table.DataTable(
-            data=df2.to_dict("rows"),
-            columns=[{"id": x, "name": x} for x in df2.columns],
-            page_size=20,
-            # style_table={'height': '400px', 'overflowY': 'auto'},
-            style_cell={'textAlign': 'center'},
-            style_header={
-                'backgroundColor': 'white',
-                'fontWeight': 'bold'
-            }
-        )
-    ])
-    return page1_info2
+    # customers
+    df_ts = df.copy()
+    df_ts = df_ts.loc[:,['date','customer_id','contador']]
+    df_ts = df_ts.drop_duplicates()
+    df_ts = df_ts.groupby(['date']).sum().reset_index()
+    fig2 = fg.simple_time_series(df_ts, x='date', y="contador", xl='Date', yl='Units')
 
+    # money
+    df_ts = df.copy()
+    df_ts = df_ts.loc[:,['date','price']]
+    df_ts = df_ts.groupby(['date']).sum().reset_index()
+    fig3 = fg.simple_time_series(df_ts, x='date', y="price", xl='Date', yl='Units')
 
-Page1Graph1 = dbc.Row(children=[
-    html.Div([
-        dcc.Graph(id='page1_grafico1', figure={})
-    ]),
-])
-@callback(
-    Output('page1_grafico1', 'figure'),
-    Input('original_data', 'data'),
-    Input('Page1Select2', 'value'),
-    )
-def display_value(data, Page1Select2):
-    data = pd.read_json(data)
-    df2 = data[data['City'] == Page1Select2]
-    page1_grafico1 = fg.barras(df2, x="Fruit", y="Amount", color="City")
-    return page1_grafico1
+    return fig1, fig2, fig3
+
 

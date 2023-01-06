@@ -10,7 +10,7 @@ about_page_content = html.Div(className="col-md-12 col-sm-12 col-lg-8 mb-md-0 mb
             html.Div(className="d-flex justify-content-between", children=[
                 html.Div(className="card-info p-4 w-75",
                          children=[html.H3(className="card-text", children=["Who am I?"]),
-                                    html.H2(className="card-text m-0 p-0", children=["Oscar"] , style={"color":theme.COLOR_PALLETE[0]}),
+                                    #html.H2(className="card-text m-0 p-0", children=["Oscar"] , style={"color":theme.COLOR_PALLETE[0]}),
                                    html.Div(className="mb-2 mt-2", children=[
                                        html.P(className="card-title mb-2",
                                             children=[about_me_text], style={"font-size":"1rem"}),

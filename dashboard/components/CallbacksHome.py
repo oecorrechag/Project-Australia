@@ -36,7 +36,6 @@ Modal =  html.Div(
     [State("modal-dismiss", "is_open")],
 )
 def toggle_modal(n_open, n_close, is_open):
-    # print(n_open, n_close, is_open)
     if n_open or n_close:
         return not is_open
     return is_open
@@ -58,33 +57,3 @@ Select_model = dbc.Card(
         ]
     ),
 )
-
-
-G1 = dbc.Card(
-    dbc.CardBody(
-        [
-            html.H4("Title", className="card-title"),
-            html.H6("Card subtitle", className="card-subtitle"),
-            html.P(
-                "Some quick example text to build on the card title and make "
-                "up the bulk of the card's content.",
-                className="card-text",
-            ),
-            dcc.Graph(id='pag_home', figure={}),
-            dbc.CardLink("Card link", href="#"),
-            dbc.CardLink("External link", href="https://google.com"),
-        ]
-    ),
-)
-@callback(
-    Output('pag_home', 'figure'),
-    Input('original_data', 'data'),
-    )
-def display_value(data):
-    data = pd.read_json(data)
-    data.insert(0, 'contador', 1)
-    data = data.groupby('date').sum().reset_index()
-    pag_home = fg.barras(data, x="date", y="contador", color="contador")
-    return pag_home
-
-

@@ -2,12 +2,12 @@ from dash import html
 import dash_bootstrap_components as dbc
 
 header = html.Div([
-    html.H1('Hello Dash'),
+    html.H1('Segmentation - Project Australian'),
     html.Div([
-        html.P('Dash converts Python classes into HTML'),
-        html.P("This conversion happens behind the scenes by Dash's JavaScript front-end")
+        # html.P('Dash converts Python classes into HTML'),
+        # html.P("This conversion happens behind the scenes by Dash's JavaScript front-end")
         ]),
-    ], style={"padding": "100px 0px 0px 100px"})
+    ], style={"padding": "10px 0px 0px 100px"})
 
 footer = html.Div([
      html.Br(),
@@ -36,7 +36,7 @@ sidebar = html.Div(
                 dbc.NavLink(
                     [
                         html.I(className="menu-icon tf-icons bx bx-group"),
-                        html.Span("Page 1"),
+                        html.Span("Page Description"),
                     ],
                     href="/page1",
                     active="exact",
@@ -45,7 +45,7 @@ sidebar = html.Div(
                 dbc.NavLink(
                     [
                         html.I(className="menu-icon tf-icons bx bx-info-circle"),
-                        html.Span("Page 2"),
+                        html.Span("Page Model"),
                     ],
                     href="/page2",
                     active="exact",

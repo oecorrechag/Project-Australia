@@ -1,7 +1,7 @@
 from dash import dcc, html
 import dash_bootstrap_components as dbc
 
-from components.CallbacksHome import Modal, Select_model, G1
+from components.CallbacksHome import Modal, Select_model
 
 home = html.Div([
 
@@ -11,7 +11,7 @@ home = html.Div([
 
     dbc.Row(children=[
         dbc.Col(Select_model, md=6),
-        dbc.Col(G1, md=6),
+        dbc.Col([], md=6),
     ]),
 
 

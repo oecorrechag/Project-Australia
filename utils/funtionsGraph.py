@@ -65,16 +65,17 @@ def grafico_circulo(data, variable, centro):
     return fig
 
 
-def grafico_circulo2(data, x, y):
+def grafico_circulo2(data, x, y, val):
      
     '''Ingresa un df y retorna un grafico de pie doble'''
 
     data = data.groupby([x, y]).sum()
     data = data.reset_index()
     
-    fig = px.sunburst(data, path=[x, y], values='units', 
+    fig = px.sunburst(data, path=[x, y], values=val, 
                       title = '',
-                      color_discrete_sequence = ['#9386f2','#90dde0','#ff514e'])
+                      #color_discrete_sequence = ['#9386f2','#90dde0','#ff514e']
+                      )
     fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
 
 
