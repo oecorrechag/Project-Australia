@@ -5,7 +5,7 @@ import dash_bootstrap_components as dbc
 
 import utils.funtionsGraph as fg 
 
-Modal =  modal = html.Div(
+Modal =  html.Div(
         [
             dbc.Button("Open modal", id="open-dismiss"),
             dbc.Modal(
@@ -40,3 +40,39 @@ def toggle_modal(n_open, n_close, is_open):
     if n_open or n_close:
         return not is_open
     return is_open
+
+
+
+Select_model = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H4("Title", className="card-title"),
+            html.H6("Card subtitle", className="card-subtitle"),
+            html.P(
+                "Some quick example text to build on the card title and make "
+                "up the bulk of the card's content.",
+                className="card-text",
+            ),
+            dbc.CardLink("Card link", href="#"),
+            dbc.CardLink("External link", href="https://google.com"),
+        ]
+    ),
+)
+
+
+G1 = dbc.Card(
+    dbc.CardBody(
+        [
+            html.H4("Title", className="card-title"),
+            html.H6("Card subtitle", className="card-subtitle"),
+            html.P(
+                "Some quick example text to build on the card title and make "
+                "up the bulk of the card's content.",
+                className="card-text",
+            ),
+            dbc.CardLink("Card link", href="#"),
+            dbc.CardLink("External link", href="https://google.com"),
+        ]
+    ),
+)
+

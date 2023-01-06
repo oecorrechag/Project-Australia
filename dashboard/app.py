@@ -15,7 +15,11 @@ SRC_FOLDER = os.path.join(ROOT_FOLDER, "src/")
 DATA_FOLDER = os.path.join(ROOT_FOLDER, "data/")
 ASSETS_FOLDER = os.path.join(SRC_FOLDER, "assets")
 
-df = pd.read_csv('data/df.csv', parse_dates=['Date'], dayfirst=True)
+# df = pd.read_csv('data/df.csv', parse_dates=['Date'], dayfirst=True)
+
+from utils.paths2 import direcciones_cursos
+G_raw, G_processed, G_interim, G_external, G_models, G_reports, G_reports_figures = direcciones_cursos('australian')
+df = pd.read_parquet(G_processed/'data.parquet.gzip')
 
 data_store = html.Div([dcc.Store(id="original_data", data=df.to_json()),
                        dcc.Store(id="intermediate")
@@ -28,7 +32,7 @@ external_style_sheet += glob.glob(os.path.join(ASSETS_FOLDER,
 external_style_sheet += glob.glob(os.path.join(ASSETS_FOLDER,
                                   "fonts") + "/*.css")
 
-app = dash.Dash(__name__, title="Segmentation Australian",
+app = dash.Dash(__name__, title="First test",
                 external_stylesheets=[
                     dbc.themes.BOOTSTRAP] + external_style_sheet,
                 suppress_callback_exceptions=True,
@@ -65,12 +69,12 @@ app.layout = html.Div([
 def routing(path):
     if path == "/":
         return home.home
-    elif path == "/page1":
-        return page1.layout1
-    elif path == "/page2":
-        return page2.layout2
-    elif path == "/about":
-        return about.about_page_content
+    # elif path == "/page1":
+    #     return page1.layout1
+    # elif path == "/page2":
+    #     return page2.layout2
+    # elif path == "/about":
+    #     return about.about_page_content
 
 
 @callback(Output('header', 'children'),
