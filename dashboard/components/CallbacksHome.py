@@ -70,9 +70,21 @@ G1 = dbc.Card(
                 "up the bulk of the card's content.",
                 className="card-text",
             ),
+            dcc.Graph(id='pag_home', figure={}),
             dbc.CardLink("Card link", href="#"),
             dbc.CardLink("External link", href="https://google.com"),
         ]
     ),
 )
+@callback(
+    Output('pag_home', 'figure'),
+    Input('original_data', 'data'),
+    )
+def display_value(data):
+    data = pd.read_json(data)
+    data.insert(0, 'contador', 1)
+    data = data.groupby('date').sum().reset_index()
+    pag_home = fg.barras(data, x="date", y="contador", color="contador")
+    return pag_home
+
 
