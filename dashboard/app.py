@@ -10,7 +10,7 @@ import warnings
 warnings.filterwarnings("ignore")
 
 
-df = pd.read_parquet('data/data.parquet.gzip')
+df = pd.read_parquet('data/df.parquet.gzip')
 df_ts = pd.read_parquet('data/df_ts.parquet.gzip')
 df_cus = pd.read_parquet('data/df_cus.parquet.gzip')
 df_cir = pd.read_parquet('data/df_cir.parquet.gzip')
