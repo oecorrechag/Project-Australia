@@ -1,5 +1,5 @@
 import pandas as pd
-from dash import dcc, html, dash_table, Input, Output, callback
+from dash import dcc, html, Input, Output, callback
 from dash_extensions.enrich import ServersideOutput
 import dash_bootstrap_components as dbc
 
@@ -16,24 +16,23 @@ Menu = dbc.Row(children=[
     ]),
 ])
 
-## filtros
-@callback(ServersideOutput('intermediate', 'data'), 
-          Input('original_data', 'data'),
-          Input('Page1Select2', 'value'),
-          memoize=True 
-          )
-def clean_data(data, Page1Select2):
-    data = pd.read_json(data)
-    # data = data[data['City'] == Page1Select2]
-    return data.to_json(date_format='iso', orient='split')
-##
+# ## filtros
+# @callback(ServersideOutput('intermediate', 'data'), 
+#           Input('original_data', 'data'),
+#           Input('Page1Select2', 'value'),
+#           memoize=True 
+#           )
+# def clean_data(data, Page1Select2):
+#     data = pd.read_json(data)
+#     # data = data[data['City'] == Page1Select2]
+#     return data.to_json(date_format='iso', orient='split')
+# ##
 
 
 G1 = dbc.Card(
     dbc.CardBody(
-        [
-            html.H4("Units vs Customers vs Money", className="card-title"),
-            html.H6("Units", className="card-subtitle"),
+        [   
+            html.H4("Units per stock", className="card-title"),
             dcc.Graph(id='Page1Graph1', figure={}),
         ]
     ),
@@ -49,8 +48,7 @@ def graphics(data):
 G2 = dbc.Card(
     dbc.CardBody(
         [
-            html.H4("Units vs Customers vs Money", className="card-title"),
-            html.H6("Units", className="card-subtitle"),
+            html.H4("Money per stock", className="card-title"),
             dcc.Graph(id='Page1Graph2', figure={}),
         ]
     ),

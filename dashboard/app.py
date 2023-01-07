@@ -1,22 +1,14 @@
 
 import pandas as pd
-
 import dash
 import dash_bootstrap_components as dbc
-from dash import Dash, dcc, html, Input, Output, callback
+from dash import dcc, html, Input, Output, callback
 from components.layouts import header, footer, sidebar
 from pages import home, page1, page2, about
 
 import warnings
 warnings.filterwarnings("ignore")
 
-# import glob
-# import os
-# ROOT_FOLDER = os.path.abspath(os.path.join(
-#     os.path.dirname(os.path.abspath(__file__)), os.pardir))
-# SRC_FOLDER = os.path.join(ROOT_FOLDER, "src/")
-# DATA_FOLDER = os.path.join(ROOT_FOLDER, "data/")
-# ASSETS_FOLDER = os.path.join(SRC_FOLDER, "assets")
 
 df = pd.read_parquet('data/data.parquet.gzip')
 df_ts = pd.read_parquet('data/df_ts.parquet.gzip')
@@ -33,21 +25,18 @@ data_store = html.Div([dcc.Store(id="original_data", data=df.to_json()),
                        ])
 
 
-# external_style_sheet = glob.glob(os.path.join(
-#     ASSETS_FOLDER, "bootstrap/css") + "/*.css")
-# external_style_sheet += glob.glob(os.path.join(ASSETS_FOLDER,
-#                                   "css") + "/*.css")
-# external_style_sheet += glob.glob(os.path.join(ASSETS_FOLDER,
-#                                   "fonts") + "/*.css")
+# app = dash.Dash(__name__, title="Segmentation",
+#                 # external_stylesheets=[
+#                 #     dbc.themes.BOOTSTRAP] + external_style_sheet,
+#                 suppress_callback_exceptions=True,
+#                 )
 
 app = dash.Dash(__name__, title="Segmentation",
-                # external_stylesheets=[
-                #     dbc.themes.BOOTSTRAP] + external_style_sheet,
+                external_stylesheets=[dbc.themes.BOOTSTRAP],
                 suppress_callback_exceptions=True,
                 )
 
 server = app.server
-
 
 
 app.layout = html.Div([
@@ -79,11 +68,10 @@ def routing(path):
         return home.home
     elif path == "/page1":
         return page1.layout1
-    # elif path == "/page2":
-    #     return page2.layout2
+    elif path == "/page2":
+        return page2.layout2
     # elif path == "/about":
     #     return about.about_page_content
-
 
 @callback(Output('header', 'children'),
           Output('footer', 'children'),
