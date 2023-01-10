@@ -20,7 +20,7 @@ InfoModel = dbc.Card(
     dbc.CardBody(
         [   
             html.H4(id='title_model', className="card-title"),
-            html.P(id='text_model', className="card-text"),
+            dcc.Markdown(id="text_model"),
         ], 
     ),
 )
@@ -34,17 +34,29 @@ def display_value(Page2Select1):
     if Page2Select1 == 'RFM':
 
         title_model = 'RFM'
-        text_model = "Lorem ipsum dolor sit alaip amet consectetur, adipisicing elit. Adipisci, illo eos ad inventore reiciendis alias impedit repellendus dolorum. Itaque cum perspiciatis nihil magni, voluptatem quibusdam asperiores aperiam animi ipsa iure! Tenetur eligendi blanditiis soluta necessitatibus consectetur sit laudantium ipsum iste explicabo architecto velit vel aperiam nesciunt ut asperiores commodi dignissimos delectus mollitia adipisci est reprehenderit a, autem placeat qui. Fugit?",
+        text_model = """
+                    - Number of segments: 8.
+                    - The best buyers belong to 8 group.
+                    - The worst buyers belong to 1 group.
+                    """,
 
     elif Page2Select1 == 'Kmeans':
 
         title_model = 'Kmeans'
-        text_model = "Lorem ipsum dolor sit asdw amet consectetur, adipisicing elit. Adipisci, illo eos ad inventore reiciendis alias impedit repellendus dolorum. Itaque cum perspiciatis nihil magni, voluptatem quibusdam asperiores aperiam animi ipsa iure! Tenetur eligendi blanditiis soluta necessitatibus consectetur sit laudantium ipsum iste explicabo architecto velit vel aperiam nesciunt ut asperiores commodi dignissimos delectus mollitia adipisci est reprehenderit a, autem placeat qui. Fugit?",
-
+        text_model = """
+                    - Number of segments: 4
+                    - The best buyers belong to 0 group.
+                    - The worst buyers belong to 1 group.
+                    """,
+                    
     elif Page2Select1 == 'Kmedoids':
 
         title_model = 'Kmedoids'
-        text_model = "Lorem ipsum dolor sit ee eramet consectetur, adipisicing elit. Adipisci, illo eos ad inventore reiciendis alias impedit repellendus dolorum. Itaque cum perspiciatis nihil magni, voluptatem quibusdam asperiores aperiam animi ipsa iure! Tenetur eligendi blanditiis soluta necessitatibus consectetur sit laudantium ipsum iste explicabo architecto velit vel aperiam nesciunt ut asperiores commodi dignissimos delectus mollitia adipisci est reprehenderit a, autem placeat qui. Fugit?",
+        text_model = """
+                    - Number of segments: 4
+                    - The best buyers belong to 0 group.
+                    - The worst buyers belong to 2 group.
+                    """,
 
     return title_model, text_model
 
@@ -100,48 +112,3 @@ def display_value(data, Page2Select1, Page2Select2):
     # fig.update_layout(autosize=False, width=500, height=500)
 
     return fig
-
-
-# Page2Box1 = dbc.Row(children=[
-#     html.Div([
-#         html.Div(id='page2_info1'),
-#     ]),
-# ])
-# @callback(
-#     Output('page2_info1', 'children'),
-#     Input('Page2Select1', 'value'),
-#     )
-# def display_value(Page2Select1):
-#     page2_info1 = f'You have selected {Page2Select1}'
-#     return page2_info1
-
-
-
-# Page2Graph1 = dbc.Row(children=[
-#     html.Div([
-#         dcc.Graph(id='page2_grafico1', figure={})
-#     ]),
-# ])
-# @callback(
-#     Output('page2_grafico1', 'figure'),
-#     Input('intermediate', 'data'),
-#     )
-# def display_value(data):
-#     data = pd.read_json(data, orient='split')
-#     page2_grafico1 = fg.barras(data, x="Fruit", y="Amount", color="City")
-#     return page2_grafico1
-
-
-# Page2Graph2 = dbc.Row(children=[
-#     html.Div([
-#         dcc.Graph(id='page2_grafico2', figure={})
-#     ]),
-# ])
-# @callback(
-#     Output('page2_grafico2', 'figure'),
-#     Input('intermediate', 'data'),
-#     )
-# def display_value(data):
-#     data = pd.read_json(data, orient='split')
-#     page2_grafico2 = fg.lineas(data, x="Date", y="Amount", color="City")
-#     return page2_grafico2

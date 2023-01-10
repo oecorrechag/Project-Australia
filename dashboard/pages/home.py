@@ -1,13 +1,9 @@
 from dash import dcc, html
 import dash_bootstrap_components as dbc
 
-from components.CallbacksHome import Modal, Select_model
+from components.CallbacksHome import Select_model
 
 home = html.Div([
-
-    Modal,
-
-    html.Br(),
 
     dbc.Row(children=[
         dbc.Col(Select_model, md=6),

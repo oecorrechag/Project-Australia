@@ -21,6 +21,7 @@ layout2 = html.Div([
         ], md=3),
 
         dbc.Col([
+            
             dbc.Row(
                 dbc.Col([MenuGraph], md=6)
             ),
@@ -30,6 +31,7 @@ layout2 = html.Div([
             dbc.Row(
                 dbc.Col([Page2Graph1], md=12)
             ),
+
         ], md=8),
     ]),
 

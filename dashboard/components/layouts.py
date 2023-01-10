@@ -12,7 +12,9 @@ header = html.Div([
 footer = html.Div([
      html.Br(),
      html.Footer('© copyright, Build with Plotly and ❤ by'),
-     html.A('Oscar', href='https://github.com/oecorrechag', target="_blank")
+     html.A('Oscar', href='https://github.com/oecorrechag', target="_blank"),
+     html.Br(),
+     html.A('inspired by Ivan Abboud', href='https://ivan96.pythonanywhere.com/team-analysis', target="_blank")
      ], style={"padding": "10px 0px 0px 100px", "text-align":"center"})
 
 sidebar = html.Div(
@@ -51,6 +53,16 @@ sidebar = html.Div(
                     active="exact",
                     className="pe-3",
                 ),
+                dbc.NavLink(
+                    [
+                        html.I(className="menu-icon tf-icons bx bx-info-circle"),
+                        html.Span("Optim Model"),
+                    ],
+                    href="/page3",
+                    active="exact",
+                    className="pe-3",
+                ),
+
                 dbc.NavLink(
                     [
                         html.I(className="menu-icon tf-icons bx bx-wink-smile"),

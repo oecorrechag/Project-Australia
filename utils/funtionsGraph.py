@@ -54,21 +54,23 @@ def grafico_circulo2(data: pd.DataFrame, x, y, val):
     return fig
 
 
-def recency_graph(data: pd.DataFrame, model):
+def recency_graph(data: pd.DataFrame):
     
     labels={'recency':'Recency', 
             'frequency':'Frequency',
             'monetary':'Monetary', 
-            model:'Segment'}
+            'model':'Segment'}
 
     colours = {'1':'#684cf6','2':'#90dde0','3':'#447FF5','4':'#78e591','5':'#1e5274','6':'#FFE343',
                '7':'#9EFF43','8':'#4AC3FF'}
 
-    orders = ['1','2','3','4','5','6','7','8']
+    orders = ['0','1','2','3','4','5','6','7','8']
 
-    fig_recency = px.box(data, y='recency', color=model, 
-                         title = 'RFM Recency',
-                         category_orders={model: orders},
+    data['model'] = data['model'].astype(str)
+
+    fig_recency = px.box(data, y='recency', color='model', 
+                         title = 'Recency',
+                         category_orders={'model': orders},
                          color_discrete_map=colours,
                          labels=labels)
     fig_recency.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
@@ -76,21 +78,23 @@ def recency_graph(data: pd.DataFrame, model):
     return fig_recency
 
 
-def frequency_graph(data: pd.DataFrame, model):
+def frequency_graph(data: pd.DataFrame):
 
     labels={'recency':'Recency', 
             'frequency':'Frequency',
             'monetary':'Monetary', 
-            model:'Segment'}
+            'model':'Segment'}
 
     colours = {'1':'#684cf6','2':'#90dde0','3':'#447FF5','4':'#78e591','5':'#1e5274','6':'#FFE343',
                '7':'#9EFF43','8':'#4AC3FF'}
 
-    orders = ['1','2','3','4','5','6','7','8']
+    orders = ['0','1','2','3','4','5','6','7','8']
 
-    fig_frequency = px.box(data, y='frequency', color=model, 
-                           title = 'RFM Frequency',
-                           category_orders={model: orders},
+    data['model'] = data['model'].astype(str)
+
+    fig_frequency = px.box(data, y='frequency', color='model', 
+                           title = 'Frequency',
+                           category_orders={'model': orders},
                            color_discrete_map=colours,
                            labels=labels)
     fig_frequency.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
@@ -98,31 +102,28 @@ def frequency_graph(data: pd.DataFrame, model):
     return fig_frequency
 
 
-def monetary_graph(data: pd.DataFrame, model):
+def monetary_graph(data: pd.DataFrame):
 
     labels={'recency':'Recency', 
             'frequency':'Frequency',
             'monetary':'Monetary', 
-            model:'Segment'}
+            'model':'Segment'}
 
     colours = {'1':'#684cf6','2':'#90dde0','3':'#447FF5','4':'#78e591','5':'#1e5274','6':'#FFE343',
                '7':'#9EFF43','8':'#4AC3FF'}
 
-    orders = ['1','2','3','4','5','6','7','8']
+    orders = ['0','1','2','3','4','5','6','7','8']
 
-    fig_monetary = px.box(data, y='monetary', color=model, 
-                title = 'RFM Monetary',
-                category_orders={model: orders},
+    data['model'] = data['model'].astype(str)
+
+    fig_monetary = px.box(data, y='monetary', color='model', 
+                title = 'Monetary',
+                category_orders={'model': orders},
                 color_discrete_map=colours,
                 labels=labels)
     fig_monetary.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
 
     return fig_monetary
-
-
-
-
-
 
 
 def rfm_graph(data: pd.DataFrame, model):
@@ -135,7 +136,7 @@ def rfm_graph(data: pd.DataFrame, model):
     colours = {'1':'#684cf6','2':'#90dde0','3':'#447FF5','4':'#78e591','5':'#1e5274','6':'#FFE343',
                '7':'#9EFF43','8':'#4AC3FF'}
 
-    orders = ['1','2','3','4','5','6','7','8']
+    orders = ['0','1','2','3','4','5','6','7','8']
 
     fig_recency = px.box(data, y='recency', color=model, 
                          title = 'RFM Recency',

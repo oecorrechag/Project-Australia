@@ -45,15 +45,15 @@ def toggle_modal(n_open, n_close, is_open):
 Select_model = dbc.Card(
     dbc.CardBody(
         [
-            html.H4("Title", className="card-title"),
-            html.H6("Card subtitle", className="card-subtitle"),
+            html.H4("Segmentation", className="card-title"),
+            html.H6("Some models", className="card-subtitle"),
             html.P(
-                "Some quick example text to build on the card title and make "
-                "up the bulk of the card's content.",
+                "In marketing, market segmentation is the process of dividing a broad consumer or business market, normally consisting of existing and potential customers, into sub-groups of consumers (known as segments) based on some type of shared characteristics.",
                 className="card-text",
             ),
-            dbc.CardLink("Card link", href="#"),
-            dbc.CardLink("External link", href="https://google.com"),
+            dbc.CardLink("RFM", href="https://en.wikipedia.org/wiki/RFM_(market_research)"),
+            dbc.CardLink("Kmeans", href="https://en.wikipedia.org/wiki/K-means_clustering"),
+            dbc.CardLink("Kmedoids", href="https://en.wikipedia.org/wiki/K-medoids"),
         ]
     ),
 )
