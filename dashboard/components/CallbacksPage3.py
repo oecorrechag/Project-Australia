@@ -31,7 +31,6 @@ OptimModel = dbc.Card(
 Page3Graph1 = dbc.Card(
     dbc.CardBody(
         [   
-            # dcc.Markdown(id="description"),
             dcc.Graph(id='Page3Graph1', figure={}),
         ]
     )#, style={"height": 450, "width":850},

@@ -55,7 +55,7 @@ sidebar = html.Div(
                 ),
                 dbc.NavLink(
                     [
-                        html.I(className="menu-icon tf-icons bx bx-info-circle"),
+                        html.I(className="menu-icon tf-icons bx bx-envelope-open"),
                         html.Span("Optim Model"),
                     ],
                     href="/page3",
