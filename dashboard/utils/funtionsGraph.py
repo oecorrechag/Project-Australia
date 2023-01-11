@@ -160,3 +160,32 @@ def rfm_graph(data: pd.DataFrame, model):
     fig_monetary.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
 
     return fig_recency, fig_frequency, fig_monetary
+
+
+def snake(data):
+    '''Esta funcion recibe un dataframe que contengan la recencia, frecuencia y monetario.
+       A continuación escala las variables y genera el grafico
+    '''
+
+    fig = px.line(data, x="variable", y="value", color='model', 
+              title = 'Parallel plot by segment',
+              category_orders={'model':['1','2','3','4','5','6','7','8','9']},
+              color_discrete_map={'1':'#684cf6', '2':'#9386f2', '3':'#90dde0', '4':'#78e591', '5':'#1e5274'},
+              labels = {'variable': 'Variable', 'value': 'Value', 'model':'Segment'},        
+              hover_data=['recency','frequency','monetary'])
+    fig.update_traces(mode='markers+lines')
+    fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
+    fig.update_xaxes(
+        tickvals=['recency_s','frequency_s','monetary_s'],
+        ticktext=['Recencia', 'Frecuencia', 'Monetario'])
+    fig.update_traces(
+        hovertemplate="<br>".join([
+            "Variable: %{x}",
+            "Scale value: %{y:,.2f}",
+            "Recency: %{customdata[0]:,.0f}",
+            "Frequency: %{customdata[1]:,.0f}",
+            "Monetary: %{customdata[2]:,.0f}",
+        ])
+    )
+    
+    return fig

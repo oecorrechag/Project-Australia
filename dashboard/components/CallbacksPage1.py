@@ -1,6 +1,5 @@
 import pandas as pd
 from dash import dcc, html, Input, Output, callback
-from dash_extensions.enrich import ServersideOutput
 import dash_bootstrap_components as dbc
 
 import utils.funtionsGraph as fg 
@@ -16,20 +15,7 @@ Menu = dbc.Row(children=[
     ]),
 ])
 
-# ## filtros
-# @callback(ServersideOutput('intermediate', 'data'), 
-#           Input('original_data', 'data'),
-#           Input('Page1Select2', 'value'),
-#           memoize=True 
-#           )
-# def clean_data(data, Page1Select2):
-#     data = pd.read_json(data)
-#     # data = data[data['City'] == Page1Select2]
-#     return data.to_json(date_format='iso', orient='split')
-# ##
-
-
-G1 = dbc.Card(
+Page1Graph1 = dbc.Card(
     dbc.CardBody(
         [   
             html.H4("Units per stock", className="card-title"),
@@ -45,7 +31,7 @@ def graphics(data):
     data = pd.read_json(data)
     return fg.grafico_circulo(data, 'stockcode', 'Stockcode')
 
-G2 = dbc.Card(
+Page1Graph2 = dbc.Card(
     dbc.CardBody(
         [
             html.H4("Money per stock", className="card-title"),
@@ -61,7 +47,7 @@ def graphics(data):
     data = pd.read_json(data)
     return fg.simple_bars_plot(data, 'stockcode', 'price', 'Stockcode', 'Price')
 
-G3 = dbc.Card(
+MultipleTimeSeries = dbc.Card(
     dbc.CardBody(
         [
             html.H4("Units vs Customers vs Money", className="card-title"),

@@ -35,6 +35,7 @@ sidebar = html.Div(
                     active="exact",
                     className="pe-3"
                 ),
+
                 dbc.NavLink(
                     [
                         html.I(className="menu-icon tf-icons bx bx-group"),
@@ -44,6 +45,7 @@ sidebar = html.Div(
                     active="exact",
                     className="pe-3"
                 ),
+
                 dbc.NavLink(
                     [
                         html.I(className="menu-icon tf-icons bx bx-info-circle"),
@@ -53,15 +55,16 @@ sidebar = html.Div(
                     active="exact",
                     className="pe-3",
                 ),
-                dbc.NavLink(
-                    [
-                        html.I(className="menu-icon tf-icons bx bx-envelope-open"),
-                        html.Span("Optim Model"),
-                    ],
-                    href="/page3",
-                    active="exact",
-                    className="pe-3",
-                ),
+
+                # dbc.NavLink(
+                #     [
+                #         html.I(className="menu-icon tf-icons bx bx-envelope-open"),
+                #         html.Span("Optim Model"),
+                #     ],
+                #     href="/page3",
+                #     active="exact",
+                #     className="pe-3",
+                # ),
 
                 dbc.NavLink(
                     [

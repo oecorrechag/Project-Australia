@@ -1,5 +1,4 @@
 import pandas as pd
-
 from dash import dcc, html, Input, Output, callback
 import dash_bootstrap_components as dbc
 
@@ -66,14 +65,11 @@ MenuGraph = dbc.Row(children=[
         html.H3('Metric'),
         dbc.Row(children=[
             dbc.Col(children=[
-                dcc.Dropdown(['Recency','Frequency','Money'], 'Recency', id='Page2Select2'), #, 'Parallel'
+                dcc.Dropdown(['Recency','Frequency','Money'], 'Recency', id='Page2Select2'),
             ]),
         ]),
     ]),
 ])
-
-
-
 Page2Graph1 = dbc.Card(
     dbc.CardBody(
         [   
@@ -83,32 +79,21 @@ Page2Graph1 = dbc.Card(
 )
 @callback(
     Output('Page2Graph1', 'figure'),
-    Input('original_data', 'data'),
+    Input('g_long_rfm', 'data'),
+    Input('g_long_kmeans', 'data'),
+    Input('g_long_kmedoids', 'data'),
     Input('Page2Select1', 'value'),
-    Input('Page2Select2', 'value'),
     )
-def display_value(data, Page2Select1, Page2Select2):
-    data = pd.read_json(data)
+def display_value(g_long_rfm, g_long_kmeans, g_long_kmedoids, Page2Select1):
+    g_long_rfm = pd.read_json(g_long_rfm)
+    g_long_kmeans = pd.read_json(g_long_kmeans)
+    g_long_kmedoids = pd.read_json(g_long_kmedoids)
 
     if Page2Select1 == 'RFM':
-        data = data.loc[:,['recency','frequency','monetary','rfm']]
-        data.rename(columns={'rfm':'model'}, inplace=True)
+        fig = fg.snake(g_long_rfm)
     elif Page2Select1 == 'Kmeans':
-        data = data.loc[:,['recency','frequency','monetary','kmeans']]
-        data.rename(columns={'kmeans':'model'}, inplace=True)
+        fig = fg.snake(g_long_kmeans)
     elif Page2Select1 == 'Kmedoids':
-        data = data.loc[:,['recency','frequency','monetary','kmedoids']]
-        data.rename(columns={'kmedoids':'model'}, inplace=True)
-
-    if Page2Select2 == 'Recency':
-        fig = fg.recency_graph(data)
-    elif Page2Select2 == 'Frequency':
-        fig = fg.frequency_graph(data)
-    elif Page2Select2 == 'Money':
-        fig = fg.monetary_graph(data)
-    else:
-        fig = fg.recency_graph(data)
-
-    # fig.update_layout(autosize=False, width=500, height=500)
+        fig = fg.snake(g_long_kmedoids)
 
     return fig
