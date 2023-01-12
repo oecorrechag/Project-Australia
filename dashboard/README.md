@@ -64,6 +64,8 @@ Using kmedoids:
 
 note: numbers of groups was random.
 
+APP: https://segmentation-project.onrender.com
+
 # Bibliografia
 
 Busra Y. (Jul 6, 2020). RFM Analysis for Customer Segmentation. Medium. Recuperado de:  
