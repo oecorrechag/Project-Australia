@@ -10,7 +10,7 @@
 
 <a href="https://drive.google.com/uc?export=view&id=1reVlQHim8OTvoKDjDj68ktt3b-Rg_Upl"><img src="https://drive.google.com/uc?export=view&id=1reVlQHim8OTvoKDjDj68ktt3b-Rg_Upl" style="width: 650px; max-width: 100%; height: auto" title="Click to enlarge picture"/>
 
-# Diseño de experimento:
+# Experimental design
 
 100,000 transactions were simulated with the following characteristics:
 
@@ -19,15 +19,15 @@
    * Number of products: 24
    * Number of products prices: 5
 
-# Problema
+# Problem
 
 There are transactions from a store, we want to know who are our best customers, and determine marketing and sales strategies.
 
-# Objetivo
+# Objective
 
 Quick sorting of shop customers.
 
-# Resultados y conclusiones
+# The main findings and conclusions
 
 Using rfm:
 
@@ -66,7 +66,7 @@ note: numbers of groups was random.
 
 APP: https://segmentation-project.onrender.com
 
-# Bibliografia
+# Bibliography
 
 Busra Y. (Jul 6, 2020). RFM Analysis for Customer Segmentation. Medium. Recuperado de:  
 https://medium.com/@yamanbsr/rfm-analysis-for-customer-segmentation-29c8c7e04f5c
