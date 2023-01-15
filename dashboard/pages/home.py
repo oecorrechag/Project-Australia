@@ -10,5 +10,4 @@ home = html.Div([
         dbc.Col([], md=6),
     ]),
 
-
 ], style={"padding": "0px 20px 0px 100px"})

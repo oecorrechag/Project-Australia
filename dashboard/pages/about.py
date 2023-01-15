@@ -29,3 +29,4 @@ about_page_content = html.Div(className="col-md-12 col-sm-12 col-lg-8 mb-md-0 mb
     ])
     ], style={"padding": "0px 0px 0px 100px"}
     )
+    

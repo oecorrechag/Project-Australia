@@ -30,7 +30,6 @@ def grafico_circulo(data: pd.DataFrame, variable, centro):
     
     labels = list(data[variable])
     fig = go.Figure(data=[go.Pie(labels = labels, values = data['contador'], name='', 
-                                 # marker_colors=human_sequence2h,
                                  direction='clockwise', sort=False)])
     fig.update_traces(hole=.5, hoverinfo="label+percent+value+name", textinfo='label')
     fig.update_layout(
@@ -48,7 +47,6 @@ def grafico_circulo2(data: pd.DataFrame, x, y, val):
     data = data.reset_index()
     fig = px.sunburst(data, path=[x, y], values=val, 
                       title = '',
-                      #color_discrete_sequence = ['#9386f2','#90dde0','#ff514e']
                       )
     fig.update_layout({'plot_bgcolor': 'rgba(0, 0, 0, 0)', 'paper_bgcolor': 'rgba(0, 0, 0, 0)'})
     return fig
@@ -162,7 +160,7 @@ def rfm_graph(data: pd.DataFrame, model):
     return fig_recency, fig_frequency, fig_monetary
 
 
-def snake(data):
+def snake(data: pd.DataFrame):
     '''Esta funcion recibe un dataframe que contengan la recencia, frecuencia y monetario.
        A continuación escala las variables y genera el grafico
     '''

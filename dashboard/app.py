@@ -3,8 +3,7 @@ import dash
 import dash_bootstrap_components as dbc
 from dash import dcc, html, Input, Output, callback
 from components.layouts import header, footer, sidebar
-from pages import home, page1, page2, about
-
+from pages import home, Description, Model, about
 
 df_ts = pd.read_parquet('data/df_ts.parquet.gzip')
 df_cus = pd.read_parquet('data/df_cus.parquet.gzip')
@@ -24,12 +23,6 @@ data_store = html.Div([dcc.Store(id="df_ts", data=df_ts.to_json()),
                        dcc.Store(id="intermediate")
                        ])
 
-
-# app = dash.Dash(__name__, title="Segmentation",
-#                 # external_stylesheets=[
-#                 #     dbc.themes.BOOTSTRAP] + external_style_sheet,
-#                 suppress_callback_exceptions=True,
-#                 )
 
 app = dash.Dash(__name__, title="Segmentation",
                 external_stylesheets=[dbc.themes.BOOTSTRAP],
@@ -65,12 +58,10 @@ app.layout = html.Div([
 def routing(path):
     if path == "/":
         return home.home
-    elif path == "/page1":
-        return page1.layout1
-    elif path == "/page2":
-        return page2.layout2
-    # elif path == "/page3":
-    #     return page3.layout3
+    elif path == "/Description":
+        return Description.layout1
+    elif path == "/Model":
+        return Model.layout2
     elif path == "/about":
         return about.about_page_content
 
@@ -81,5 +72,8 @@ def display_page(path):
     return  header, footer
 
 
-if __name__ == '__main__':
-    app.run_server(debug=True)
+# if __name__ == '__main__':
+#     app.run_server(debug=True)
+
+if __name__ == "__main__":
+    app.run_server(host="0.0.0.0", port=5050)

@@ -1,4 +1,3 @@
-
 # Funcion tipo1
 def tipo1(df, variable):
     
@@ -13,3 +12,4 @@ def tipo1(df, variable):
     salida = salida.sort_values(by=['proporcion'], ascending=False)
     
     return salida
+    
