@@ -1,10 +1,10 @@
 from dash import html
 import dash_bootstrap_components as dbc
 
-from components.CallbacksPage1 import Menu
-from components.CallbacksPage1 import Page1Graph1
-from components.CallbacksPage1 import Page1Graph2
-from components.CallbacksPage1 import MultipleTimeSeries
+from components.CallbacksDescription import Menu
+from components.CallbacksDescription import Page1Graph1
+from components.CallbacksDescription import Page1Graph2
+from components.CallbacksDescription import MultipleTimeSeries
 
 
 layout1 = html.Div([

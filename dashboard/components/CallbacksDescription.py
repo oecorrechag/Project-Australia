@@ -4,6 +4,7 @@ import dash_bootstrap_components as dbc
 
 import utils.funtionsGraph as fg 
 
+
 Menu = dbc.Row(children=[
     html.Div([
         html.H3('Menu'),
@@ -117,3 +118,4 @@ def graphics(df_ts, df_cus, Page1Select1):
         fig3 = fg.simple_time_series(df_ts2, x='date', y="price", xl='Date', yl='Money')
 
     return fig1, fig2, fig3
+    

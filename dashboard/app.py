@@ -1,9 +1,10 @@
 import pandas as pd
-import dash
 import dash_bootstrap_components as dbc
-from dash import dcc, html, Input, Output, callback
-from components.layouts import header, footer, sidebar
-from pages import home, Description, Model, about
+from dash import Dash, dcc, html, Input, Output, callback
+from pages import description, home, about, model
+
+from pages.header import header
+from pages.footer import footer
 
 df_ts = pd.read_parquet('data/df_ts.parquet.gzip')
 df_cus = pd.read_parquet('data/df_cus.parquet.gzip')
@@ -24,10 +25,10 @@ data_store = html.Div([dcc.Store(id="df_ts", data=df_ts.to_json()),
                        ])
 
 
-app = dash.Dash(__name__, title="Segmentation",
-                external_stylesheets=[dbc.themes.BOOTSTRAP],
-                suppress_callback_exceptions=True,
-                )
+app = Dash(__name__, title="Segmentation",
+           external_stylesheets=[dbc.themes.BOOTSTRAP],
+           suppress_callback_exceptions=True,
+           )
 server = app.server
 
 
@@ -35,9 +36,6 @@ app.layout = html.Div([
 
     dcc.Location(id='url'),
     data_store,
-
-    # Menu
-    html.Aside(className="", children=[sidebar]),
 
     # Header
     html.Div(id='header'),
@@ -56,14 +54,14 @@ app.layout = html.Div([
     Input(component_id='url', component_property='pathname')
 )
 def routing(path):
-    if path == "/":
+    if (path == '/home') | (path == '/'):
         return home.home
-    elif path == "/Description":
-        return Description.layout1
-    elif path == "/Model":
-        return Model.layout2
+    elif path == "/description":
+        return description.layout1
+    elif path == "/model":
+        return model.layout2
     elif path == "/about":
-        return about.about_page_content
+        return about.about
 
 @callback(Output('header', 'children'),
           Output('footer', 'children'),
@@ -72,8 +70,8 @@ def display_page(path):
     return  header, footer
 
 
-# if __name__ == '__main__':
-#     app.run_server(debug=True)
+if __name__ == '__main__':
+    app.run_server(debug=True)
 
-if __name__ == "__main__":
-    app.run_server(host="0.0.0.0", port=5050)
+# if __name__ == "__main__":
+#     app.run_server(host="0.0.0.0", port=5050)

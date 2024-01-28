@@ -3,11 +3,19 @@ import dash_bootstrap_components as dbc
 
 from components.CallbacksHome import Select_model
 
-home = html.Div([
+home = dbc.Container([
 
-    dbc.Row(children=[
-        dbc.Col(Select_model, md=6),
-        dbc.Col([], md=6),
+    html.Br(),
+    html.H3('Home Page'),
+
+    dbc.Row([
+        dbc.Col(className="col col-md-10 offset-md-1 col-lg-8 offset-lg-2 pt-2", children=[
+
+            Select_model,
+
+            ])
     ]),
 
-], style={"padding": "0px 20px 0px 100px"})
+    html.Br(),html.Br(),html.Br(),html.Br(),html.Br(),html.Br(),html.Br(),
+
+])
