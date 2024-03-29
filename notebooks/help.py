@@ -33,3 +33,29 @@ def calculate_time_between_purchases(dataframe: pd.DataFrame, customer_id_column
   results_df = results_df.reset_index()
 
   return results_df
+
+
+def cluster_summary(dataframe: pd.DataFrame, column_group: str, statistics_list=None) -> pd.DataFrame:
+    """
+    Computes fundamental statistical measures within specified groups, offering flexibility and readability.
+
+    Args:
+        dataframe (pd.DataFrame): The input DataFrame.
+        column_group (str): Column to group.
+        statistics_list (list, optional): List of statistical measures to compute.
+            Defaults to ['mean', 'median', 'min', 'max', 'std'].
+
+    Returns:
+        pd.DataFrame: A DataFrame with the specified statistical measures.
+    """
+
+    if statistics_list is None:
+        statistics_list = ['mean', 'median', 'min', 'max', 'std']  # Include standard deviation by default
+
+    def g(df):
+        return df.groupby(column_group).agg(statistics_list)
+
+    resume = g(dataframe.copy())  # Avoid modifying original DataFrame
+    resume.columns = resume.columns.map('_'.join)  # Concise column renaming
+
+    return resume.reset_index().rename(columns={column_group: 'category'}).melt(id_vars='category', var_name='statistic', value_name='value')
