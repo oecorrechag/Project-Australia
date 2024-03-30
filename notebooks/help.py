@@ -1,4 +1,6 @@
 import pandas as pd
+from sklearn.preprocessing import MinMaxScaler
+scaler = MinMaxScaler()
 
 def calculate_time_between_purchases(dataframe: pd.DataFrame, customer_id_column: str, date_column: str) -> pd.DataFrame:
   """
@@ -35,7 +37,7 @@ def calculate_time_between_purchases(dataframe: pd.DataFrame, customer_id_column
   return results_df
 
 
-def cluster_summary(dataframe: pd.DataFrame, column_group: str, statistics_list=None) -> pd.DataFrame:
+def cluster_summary(dataframe: pd.DataFrame, column_group: str, sta: str =True, statistics_list=None) -> pd.DataFrame:
     """
     Computes fundamental statistical measures within specified groups, offering flexibility and readability.
 
@@ -49,6 +51,11 @@ def cluster_summary(dataframe: pd.DataFrame, column_group: str, statistics_list=
         pd.DataFrame: A DataFrame with the specified statistical measures.
     """
 
+    if sta is True:
+       numeric_columns = dataframe.select_dtypes(include=['number']).columns
+       numeric_columns = [col for col in numeric_columns if col not in dataframe.select_dtypes(include=['object']).columns]
+       dataframe[numeric_columns] = scaler.fit_transform(dataframe[numeric_columns])
+        
     if statistics_list is None:
         statistics_list = ['mean', 'median', 'min', 'max', 'std']  # Include standard deviation by default
 
