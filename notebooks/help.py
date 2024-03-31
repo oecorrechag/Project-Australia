@@ -51,6 +51,9 @@ def cluster_summary(dataframe: pd.DataFrame, column_group: str, sta: str =True, 
         pd.DataFrame: A DataFrame with the specified statistical measures.
     """
 
+    # Convert the group variable to a string
+    dataframe[column_group] = dataframe[column_group].astype(str)
+
     if sta is True:
        numeric_columns = dataframe.select_dtypes(include=['number']).columns
        numeric_columns = [col for col in numeric_columns if col not in dataframe.select_dtypes(include=['object']).columns]
