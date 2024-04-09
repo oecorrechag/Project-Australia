@@ -1,6 +1,6 @@
 # Project-Australia
 
-# <center> Application of RFM - Kmeans - Kmedoids
+# <center> Application of RFM - Kmeans - Kmedoids - Gmm
 
 **RFM** RFM is abbreviation for Recency, Frequency and Monetary. It is a technique that helps determine marketing and sales strategies based on customers' buying habits.
 
