@@ -1,14 +1,19 @@
 import uvicorn
+import pickle
 import pandas as pd
+import numpy as np
 from fastapi import FastAPI
 from lifetimes import BetaGeoFitter, GammaGammaFitter
-from api.inputs_data import inputs, profit, cltv
+from inputs_data import inputs, profit, cltv, lossed
 
 bgf = BetaGeoFitter()
 bgf.load_model('bgf.pkl')
 
 ggf = GammaGammaFitter()
 ggf.load_model('ggf.pkl')
+
+with open('pipeline_lr.pkl', 'rb') as f:
+    loaded_pipeline = pickle.load(f)
 
 app = FastAPI()
 
@@ -30,6 +35,7 @@ def profit(data:profit):
     monetary = data['monetary']
     out_model = ggf.conditional_expected_average_profit(frequency, monetary)
     return {"prediction profit": out_model}
+
 
 @app.post("/cltv")
 def cltv(data:cltv):
@@ -54,6 +60,19 @@ def cltv(data:cltv):
                                             )[0]
 
     return {"prediction cltv": out_model}
+
+
+@app.post("/lossed")
+def lossed(data:lossed):
+    data = data.dict()
+    live_purches = data['live_purches']
+    tenure = data['tenure']
+    monetary = data['monetary']
+
+    out_model = loaded_pipeline.predict_proba([[live_purches, tenure, monetary]])
+    out_model = np.round(out_model[:,1][0])
+
+    return {"prediction loss": out_model}
 
 # 5. Run the API with uvicorn
 if __name__ == "__main__":

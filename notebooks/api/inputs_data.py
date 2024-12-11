@@ -18,3 +18,7 @@ class cltv(BaseModel):
     T:float=90
     monetary:float=1200
     
+class lossed(BaseModel):
+    live_purches:float=1462
+    tenure:float=1298
+    monetary:float=1134
